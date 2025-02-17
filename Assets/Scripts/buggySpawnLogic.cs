@@ -9,6 +9,7 @@ public class buggySpawnLogic : MonoBehaviour, IInteractable
     {
         buggy = GameObject.FindGameObjectWithTag("Buggy");
         buggyM = buggy.GetComponent<buggyMove>();
+        SpawnBuggy();
     }
     public void Interact()
     {

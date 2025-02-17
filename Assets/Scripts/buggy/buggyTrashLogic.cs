@@ -14,6 +14,7 @@ public class buggyTrashLogic : MonoBehaviour,IInteractable
     private void Awake()
     {
         plI = GameObject.FindWithTag("Player").GetComponent<pl_inventory>();
+        UpdateTMP();
     }
     public void Interact()
     {
@@ -24,6 +25,7 @@ public class buggyTrashLogic : MonoBehaviour,IInteractable
                 plI.PutInHand(fullTrashSack);
                 currentCorpseCount = 0;
                 UpdateTMP();
+
             }
             
         }
@@ -39,7 +41,7 @@ public class buggyTrashLogic : MonoBehaviour,IInteractable
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Touch");
+        
         if (collision.transform.CompareTag("Corpse"))
         {
             FillTrash();
@@ -58,6 +60,14 @@ public class buggyTrashLogic : MonoBehaviour,IInteractable
 
     private void UpdateTMP()
     {
+        if (currentCorpseCount < minCorpseSackCount)
+        {
+            trashTMP.color = Color.red;
+        }
+        else
+        {
+            trashTMP.color = Color.green;
+        }
         trashTMP.text = $"{currentCorpseCount}/{maxCorpseCount}";
     }
 }

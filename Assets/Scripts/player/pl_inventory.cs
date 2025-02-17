@@ -59,7 +59,7 @@ public class pl_inventory : MonoBehaviour
                 equipmentInHand = Instantiate(newEquip, equipmentPosition.position, equipmentPosition.rotation, equipmentPosition);
                 SwitchState(fireEx);
                 particleSys = equipmentInHand.transform.GetChild(1).gameObject.GetComponent<ParticleSystem>();
-                
+
                 break;
             case "Corpse":
                 equipmentInHand = newEquip;
@@ -93,6 +93,7 @@ public class pl_inventory : MonoBehaviour
                 SwitchState(fullTrashSack);
                 break;
             case "Broom":
+                equipmentInHand = Instantiate(newEquip, equipmentPosition.position, equipmentPosition.rotation, equipmentPosition);
                 SwitchState(broom);
                 break;
             default:
