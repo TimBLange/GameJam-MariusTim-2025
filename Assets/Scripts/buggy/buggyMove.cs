@@ -9,11 +9,10 @@ public class buggyMove : MonoBehaviour
     BuggyState currentState;
     public BuggyState buggyDrive = new BuggyDriveState();
     public BuggyState buggyStand = new BuggyStandState();
-    public float startAcceleration;
+   
     private void Awake()
     {
         meshAgent = GetComponent<NavMeshAgent>();
-        startAcceleration = meshAgent.acceleration;
         SwitchState(buggyStand);
     }
 
@@ -36,10 +35,15 @@ public class buggyMove : MonoBehaviour
 
     public void StartBuggyMove(Vector3 currentBuggyPingPoint)
     {
-        buggyPingPoint = currentBuggyPingPoint;
+        UpdateBuggyPingPoint(currentBuggyPingPoint);
         SwitchState(buggyDrive);
     }
 
+    public void UpdateBuggyPingPoint(Vector3 newPos)
+    {
+        buggyPingPoint = newPos;
+        meshAgent.destination = buggyPingPoint;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("PingPoint"))
@@ -60,9 +64,7 @@ public class BuggyStandState : BuggyState
     public override void OnStart(buggyMove bM)
     {
         Debug.Log("BuggyStand");
-        bM.buggyPingPoint = bM.transform.position;
-        bM.meshAgent.acceleration = 0;
-
+        
 
     }
     public override void OnLateUpdate(buggyMove bM)
@@ -80,12 +82,14 @@ public class BuggyDriveState : BuggyState
     public override void OnStart(buggyMove bM)
     {
         Debug.Log("BuggyDrives");
-        bM.meshAgent.acceleration = bM.startAcceleration;
+       
+
+
     }
     public override void OnLateUpdate(buggyMove bM)
     {
         
-        bM.meshAgent.destination = bM.buggyPingPoint;
+        
        
     }
     public override void OnEnd(buggyMove bM)

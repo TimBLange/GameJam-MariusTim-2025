@@ -17,9 +17,11 @@ public class buggySpawnLogic : MonoBehaviour, IInteractable
     
     private void SpawnBuggy()
     {
-        buggy.transform.position = spawnPlatform.transform.position + transform.up*2;
-        buggy.transform.rotation = spawnPlatform.transform.rotation;
+        buggyM.UpdateBuggyPingPoint(spawnPlatform.transform.position);
         buggyM.SwitchState(buggyM.buggyStand);
-        buggyM.buggyPingPoint = transform.position;
+        buggy.transform.position = spawnPlatform.transform.position + transform.up*1.2f;
+        buggy.transform.rotation = spawnPlatform.transform.rotation;
+        
+        
     }
 }
