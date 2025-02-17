@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using TMPro;
 interface IInteractable
 {
     public void Interact();
@@ -14,6 +14,7 @@ public class pl_cam_move : MonoBehaviour
     [SerializeField]
     [Range(1, 10)]
     float interactorRange;
+    [SerializeField] TMPro.TextMeshProUGUI lookAtHUD;
 
     void Start()
     {
@@ -39,11 +40,16 @@ public class pl_cam_move : MonoBehaviour
 
             if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObject))
             {
+                lookAtHUD.text = interactObject.ToString();
                 Debug.Log(interactObject);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     interactObject.Interact();
                 }
+            }
+            else
+            {
+                lookAtHUD.text = "";
             }
         }
 
