@@ -16,8 +16,8 @@ public class equipmentHolderLogic : MonoBehaviour, IInteractable
         }
         else
         {
-            Debug.Log($"{equipment.name}(Clone)");
-            if (pl_invent.equipmentInHand.name == $"{equipment.name}(Clone)")
+            
+            if (pl_invent.equipmentInHand.CompareTag(equipment.tag))
             {
                 pl_invent.TakeFromHand();
                 equipmentOnBuggy.SetActive(true);

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2345848045973153339}
   - component: {fileID: 5274739974202865249}
   - component: {fileID: 2141289492764752129}
-  - component: {fileID: 991686794062289669}
   m_Layer: 0
   m_Name: PlayerHitbox
   m_TagString: Untagged
@@ -111,21 +110,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &991686794062289669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 298387462230038395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fadf03025c2088c428862852af8b64a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sens: 0
-  interactorRange: 1
-  lookAtHUD: {fileID: 0}
 --- !u!1 &1295889130606413873
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,8 +185,8 @@ GameObject:
   - component: {fileID: 5801532130427097294}
   - component: {fileID: 1538665822400102858}
   - component: {fileID: 364334443100821873}
-  - component: {fileID: 2515582200440692264}
   - component: {fileID: 1362793074702836585}
+  - component: {fileID: 2515582200440692264}
   - component: {fileID: 3108015439689865601}
   m_Layer: 0
   m_Name: Player
@@ -285,6 +269,28 @@ MonoBehaviour:
   sens: 1
   interactorRange: 2.5
   lookAtHUD: {fileID: 0}
+--- !u!114 &1362793074702836585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5738167131628747601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc31abe4764ca054892e57787c8e11f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentInHandBool: 0
+  equipmentInHand: {fileID: 0}
+  equipmentPosition: {fileID: 5676141858016209251}
+  cam: {fileID: 0}
+  particleSys: {fileID: 7788815130934914980, guid: 03b7c98409a20f248aa733afe9f05ebe, type: 3}
+  fireExRange: 5
+  FireExDamageInSeconds: 1
+  corpseRb: {fileID: 0}
+  corpseCollider: {fileID: 0}
+  corpseThrowForce: 10
 --- !u!114 &2515582200440692264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,21 +307,6 @@ MonoBehaviour:
   amount: 0.00416
   frequenzy: 13.22
   smooth: 10
---- !u!114 &1362793074702836585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5738167131628747601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc31abe4764ca054892e57787c8e11f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  equipmentInHandBool: 0
-  equipmentInHand: {fileID: 0}
-  equipmentPosition: {fileID: 5676141858016209251}
 --- !u!114 &3108015439689865601
 MonoBehaviour:
   m_ObjectHideFlags: 0
