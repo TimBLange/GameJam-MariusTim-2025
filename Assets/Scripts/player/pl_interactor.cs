@@ -21,7 +21,7 @@ public class pl_interactor : MonoBehaviour
             
                 if(hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObject))
                 {
-                Debug.Log(interactObject);
+                /*Debug.Log(interactObject);*/
                 if (Input.GetKeyDown(KeyCode.E))
                     {
                         interactObject.Interact();

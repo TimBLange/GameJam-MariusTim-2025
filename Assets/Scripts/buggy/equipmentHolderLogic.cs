@@ -4,22 +4,26 @@ public class equipmentHolderLogic : MonoBehaviour, IInteractable
 {
     [SerializeField] GameObject equipment;
     [SerializeField] GameObject equipmentOnBuggy;
-    [SerializeField] pl_inventory pl_invent;
+    pl_inventory plI;
 
+    private void Awake()
+    {
+        plI = GameObject.FindWithTag("Player").GetComponent<pl_inventory>();
+    }
     public void Interact()
     {
-        if (!pl_invent.equipmentInHandBool)
+        if (!plI.equipmentInHandBool)
         {
             Debug.Log($"{gameObject} + {equipment.activeSelf}");
-            pl_invent.PutInHand(equipment);
+            plI.PutInHand(equipment);
             equipmentOnBuggy.SetActive(false);
         }
         else
         {
             
-            if (pl_invent.equipmentInHand.CompareTag(equipment.tag))
+            if (plI.equipmentInHand.CompareTag(equipment.tag))
             {
-                pl_invent.TakeFromHand();
+                plI.TakeFromHand();
                 equipmentOnBuggy.SetActive(true);
             }
         }

@@ -53,6 +53,7 @@ public class pl_inventory : MonoBehaviour
                 corpseRb.isKinematic = true;
                 corpseCollider.enabled = false;
                 newEquip.transform.position = equipmentPosition.position;
+                newEquip.transform.rotation = equipmentPosition.rotation;
                 newEquip.transform.parent = equipmentPosition;
 
                 SwitchState(corpse);

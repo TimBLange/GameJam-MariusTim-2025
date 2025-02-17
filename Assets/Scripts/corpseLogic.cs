@@ -2,8 +2,12 @@ using UnityEngine;
 
 public class corpseLogic : MonoBehaviour,IInteractable
 {
-    [SerializeField] pl_inventory plI;
+    pl_inventory plI;
 
+    private void Awake()
+    {
+        plI = GameObject.FindWithTag("Player").GetComponent<pl_inventory>();
+    }
     public void Interact()
     {
         if (!plI.equipmentInHandBool)

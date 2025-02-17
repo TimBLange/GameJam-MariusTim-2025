@@ -4,9 +4,13 @@ public class pl_pingbuggy : MonoBehaviour
 {
     [SerializeField] Transform interactorSource;
     [SerializeField] GameObject buggyPingPoint;
-    [SerializeField] buggyMove buggyLogic;
+    buggyMove buggyLogic;
     GameObject currentBuggyPingPoint;
-    
+
+    private void Awake()
+    {
+        buggyLogic = GameObject.FindWithTag("Buggy").GetComponent<buggyMove>();
+    }
     void Update()
     {
         if (Input.GetMouseButtonDown(1))

@@ -41,7 +41,7 @@ public class pl_cam_move : MonoBehaviour
             if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObject))
             {
                 lookAtHUD.text = interactObject.ToString();
-                Debug.Log(interactObject);
+                /*Debug.Log(interactObject);*/
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     interactObject.Interact();
