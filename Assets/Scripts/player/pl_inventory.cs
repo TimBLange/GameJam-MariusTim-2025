@@ -13,6 +13,7 @@ public class pl_inventory : MonoBehaviour
     InventoryState corpse = new CorpseState();
     InventoryState broom = new BroomState();
     InventoryState fireEx = new FireExState();
+    InventoryState fullTrashSack = new FullTrashSackState();
 
     public GameObject cam;
     [Header("FireEx")]
@@ -72,6 +73,25 @@ public class pl_inventory : MonoBehaviour
 
                 SwitchState(corpse);
                 break;
+            case "FullTrashSack":
+                if(!newEquip.TryGetComponent(out testScript tS))
+                {
+                    equipmentInHand = newEquip;
+                    newEquip.transform.position = equipmentPosition.position;
+                    newEquip.transform.rotation = equipmentPosition.rotation;
+                    newEquip.transform.parent = equipmentPosition;
+                }
+                else
+                {
+                    equipmentInHand = Instantiate(newEquip, equipmentPosition.position, equipmentPosition.rotation, equipmentPosition);
+                    Destroy(equipmentInHand.GetComponent<testScript>());
+                }
+                corpseRb = equipmentInHand.GetComponent<Rigidbody>();
+                corpseCollider = equipmentInHand.GetComponent<Collider>();
+                corpseRb.isKinematic = true;
+                corpseCollider.enabled = false;
+                SwitchState(fullTrashSack);
+                break;
             case "Broom":
                 SwitchState(broom);
                 break;
@@ -94,6 +114,14 @@ public class pl_inventory : MonoBehaviour
                 corpseCollider.enabled = true;
                 corpseRb.isKinematic = false;
                 corpseRb.AddForce(cam.transform.forward*corpseThrowForce, ForceMode.Impulse);
+                equipmentInHand.transform.parent = null;
+                corpseRb = null;
+                break;
+            case "FullTrashSack":
+                equipmentInHand.transform.parent = null;
+                corpseCollider.enabled = true;
+                corpseRb.isKinematic = false;
+                corpseRb.AddForce(cam.transform.forward * corpseThrowForce, ForceMode.Impulse);
                 equipmentInHand.transform.parent = null;
                 corpseRb = null;
                 break;
@@ -243,3 +271,24 @@ public class EmptyState : InventoryState
         Debug.Log("EmptyStateOFF");
     }
 }
+public class FullTrashSackState : InventoryState
+{
+    public override void OnStart(pl_inventory pI)
+    {
+        Debug.Log("CorpseStateOn");
+        pI.equipmentInHandBool = true;
+    }
+    public override void OnUpdate(pl_inventory pI)
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            pI.TakeFromHand();
+        }
+    }
+    public override void OnEnd(pl_inventory pI)
+    {
+        Debug.Log("CorpseStateOFF");
+        
+    }
+}
+

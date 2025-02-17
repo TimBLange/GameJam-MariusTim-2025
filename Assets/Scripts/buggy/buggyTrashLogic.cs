@@ -3,9 +3,10 @@ using TMPro;
 
 public class buggyTrashLogic : MonoBehaviour,IInteractable
 {
-    
-    
+
+    [SerializeField] GameObject fullTrashSack;
     [SerializeField] int maxCorpseCount;
+    [SerializeField] int minCorpseSackCount;
     [SerializeField] int currentCorpseCount=0;
     [SerializeField] TMPro.TextMeshPro trashTMP;
     pl_inventory plI;
@@ -18,8 +19,13 @@ public class buggyTrashLogic : MonoBehaviour,IInteractable
     {
         if (!plI.equipmentInHandBool)
         {
-            currentCorpseCount = 0;
-            UpdateTMP();
+            if(currentCorpseCount >= minCorpseSackCount)
+            {
+                plI.PutInHand(fullTrashSack);
+                currentCorpseCount = 0;
+                UpdateTMP();
+            }
+            
         }
         else
         {
