@@ -94,7 +94,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 298387462230038395}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 0c7f95019af45ec48a5897fff9ae4990, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -772,6 +772,10 @@ MonoBehaviour:
   particleSys: {fileID: 7788815130934914980, guid: 03b7c98409a20f248aa733afe9f05ebe, type: 3}
   fireExRange: 5
   FireExDamageInSeconds: 1
+  FireExFuelMax: 100
+  FireExFuelCurrent: 0
+  FireExFuelMultiplier: 20
+  fireTMPUpdate: {fileID: 3792827241311100124, guid: 03b7c98409a20f248aa733afe9f05ebe, type: 3}
   corpseRb: {fileID: 0}
   corpseCollider: {fileID: 0}
   corpseThrowForce: 10
@@ -803,9 +807,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e18c80fd3c5bdc4e9b8e14c21e20f56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 2
-  runSpeed: 3.5
-  crouchSpeed: 1
+  walkSpeed: 4
+  runSpeed: 6
+  crouchSpeed: 5
   normalHeight: 3
   crouchHeight: 1
   plCollider: {fileID: 2141289492764752129}

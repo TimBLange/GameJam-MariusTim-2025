@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class pl_inventory : MonoBehaviour
 {
     [Header("Equipment")]
@@ -18,13 +19,20 @@ public class pl_inventory : MonoBehaviour
     [SerializeField] public ParticleSystem particleSys;
     [SerializeField] public float fireExRange;
     [SerializeField] public float FireExDamageInSeconds;
-    
+    [SerializeField] public float FireExFuelMax;
+    [SerializeField] public float FireExFuelCurrent;
+    [SerializeField] public float FireExFuelMultiplier;
+    [SerializeField] public fireExUpdate fireTMPUpdate;
+
     [Header("Corpse")]
     [HideInInspector] public Rigidbody corpseRb;
     [HideInInspector] public Collider corpseCollider;
     [SerializeField] float corpseThrowForce;
     void Awake()
     {
+
+        fireTMPUpdate.UpdateTMP(100);
+        FireExFuelCurrent = FireExFuelMax;
         cam = GameObject.FindGameObjectWithTag("MainCamera");
         SwitchState(empty);
     }
@@ -33,6 +41,11 @@ public class pl_inventory : MonoBehaviour
     void Update()
     {
         currentState.OnUpdate(this);
+        if (currentState != fireEx && FireExFuelCurrent<FireExFuelMax)
+        {
+            ReloadFireEx();
+        }
+        
     }
 
     public void PutInHand(GameObject newEquip)
@@ -45,6 +58,7 @@ public class pl_inventory : MonoBehaviour
                 equipmentInHand = Instantiate(newEquip, equipmentPosition.position, equipmentPosition.rotation, equipmentPosition);
                 SwitchState(fireEx);
                 particleSys = equipmentInHand.transform.GetChild(1).gameObject.GetComponent<ParticleSystem>();
+                
                 break;
             case "Corpse":
                 equipmentInHand = newEquip;
@@ -109,6 +123,21 @@ public class pl_inventory : MonoBehaviour
         currentState = newState;
         currentState.OnStart(this);
     }
+    public void ReloadFireEx()
+    {
+        FireExFuelCurrent += FireExDamageInSeconds * Time.deltaTime * FireExFuelMultiplier;
+        FireExFuelCurrent = Mathf.Clamp(FireExFuelCurrent, 0, FireExFuelMax);
+        
+    }
+    public void UnloadFireEx()
+    {
+        FireExFuelCurrent -= FireExDamageInSeconds * Time.deltaTime * FireExFuelMultiplier;
+        FireExFuelCurrent=Mathf.Clamp(FireExFuelCurrent, 0, FireExFuelMax);
+
+        
+        /*fireTMPUpdate.UpdateTMP(FireExFuelCurrent);*/
+
+    }
 }
 
 public abstract class InventoryState
@@ -123,6 +152,7 @@ public class FireExState : InventoryState
 {
     public override void OnStart(pl_inventory pI)
     {
+       
         Debug.Log("FireExStateOn");
         pI.equipmentInHandBool = true;
     }
@@ -132,6 +162,7 @@ public class FireExState : InventoryState
         {
             Debug.Log("Use FireEx");
             pI.particleSys.Play();
+
             
         }
         else if (Input.GetMouseButtonUp(0))
@@ -140,8 +171,10 @@ public class FireExState : InventoryState
             pI.particleSys.Stop();
         }
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0)&&pI.FireExFuelCurrent>0)
         {
+            pI.UnloadFireEx();
+            
             Ray r = new Ray(pI.cam.transform.position, pI.cam.transform.forward);
             if (Physics.Raycast(r, out RaycastHit hitInfo, pI.fireExRange))
             {
@@ -152,6 +185,10 @@ public class FireExState : InventoryState
 
                 }
             }
+        }
+        else if(Input.GetMouseButton(0) && pI.FireExFuelCurrent <=0)
+        {
+            pI.particleSys.Stop();
         }
     }
     public override void OnEnd(pl_inventory pI)

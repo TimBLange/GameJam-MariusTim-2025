@@ -920,6 +920,7 @@ GameObject:
   - component: {fileID: 2042185575489676088}
   - component: {fileID: 2939706117125543041}
   - component: {fileID: 630304504835578437}
+  - component: {fileID: 8041960998484353715}
   m_Layer: 0
   m_Name: TrashBag
   m_TagString: Untagged
@@ -1032,6 +1033,33 @@ MonoBehaviour:
   maxCorpseCount: 3
   currentCorpseCount: 0
   trashTMP: {fileID: 2382723811809926883}
+--- !u!54 &8041960998484353715
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5026137105146497890}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5136318168596440058
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,13 +1395,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5733294639852948402}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0.5554192, y: 1.0022278, z: 0.13022518}
+  m_LocalRotation: {x: 0.16014946, y: 0.688846, z: 0.6886056, w: 0.16020532}
+  m_LocalPosition: {x: -0.584, y: 1.015, z: 0.13}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6850409738763626403}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -63.815, y: 90.041, z: 89.955}
 --- !u!33 &1209366623575755449
 MeshFilter:
   m_ObjectHideFlags: 0

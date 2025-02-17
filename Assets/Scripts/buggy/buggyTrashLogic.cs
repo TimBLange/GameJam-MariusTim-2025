@@ -33,6 +33,7 @@ public class buggyTrashLogic : MonoBehaviour,IInteractable
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Touch");
         if (collision.transform.CompareTag("Corpse"))
         {
             FillTrash();

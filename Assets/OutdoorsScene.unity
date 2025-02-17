@@ -590,18 +590,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3108015439689865601, guid: 825521fb8ecabcc48a8499b56972e823, type: 3}
-      propertyPath: runSpeed
-      value: 9.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3108015439689865601, guid: 825521fb8ecabcc48a8499b56972e823, type: 3}
-      propertyPath: walkSpeed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3108015439689865601, guid: 825521fb8ecabcc48a8499b56972e823, type: 3}
-      propertyPath: crouchSpeed
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5738167131628747601, guid: 825521fb8ecabcc48a8499b56972e823, type: 3}
       propertyPath: m_Name
       value: Player
