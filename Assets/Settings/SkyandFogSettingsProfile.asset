@@ -58,8 +58,8 @@ MonoBehaviour:
   scrollOrientation:
     m_OverrideState: 0
     m_Value:
-      mode: 1
-      customValue: 0
+      mode: 0
+      customValue: 360
       additiveValue: 0
       multiplyValue: 1
   scrollSpeed:
