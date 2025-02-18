@@ -25,10 +25,16 @@ public class pl_inventory : MonoBehaviour
     [SerializeField] public float FireExFuelMultiplier;
     [SerializeField] public fireExUpdate fireTMPUpdate;
 
-    [Header("Corpse")]
-    [HideInInspector] public Rigidbody corpseRb;
-    [HideInInspector] public Collider corpseCollider;
-    [SerializeField] float corpseThrowForce;
+    [Header("Throwables")]
+    [SerializeField] float throwForce;
+    [HideInInspector] public Rigidbody throwableRb;
+    [HideInInspector] public Collider throwableCollider;
+
+    [Header("Broom")]
+    [SerializeField] public float broomRange;
+    [SerializeField] public int broomBloodMeterMax;
+    [SerializeField] public int broomBloodMeterCurrent;
+    [SerializeField] public GameObject bloodPrefab;
     void Awake()
     {
 
@@ -42,16 +48,16 @@ public class pl_inventory : MonoBehaviour
     void Update()
     {
         currentState.OnUpdate(this);
-        if (currentState != fireEx && FireExFuelCurrent<FireExFuelMax)
+        if (currentState != fireEx && FireExFuelCurrent < FireExFuelMax)
         {
             ReloadFireEx();
         }
-        
+
     }
 
     public void PutInHand(GameObject newEquip)
     {
-        
+
 
         switch (newEquip.tag)
         {
@@ -63,10 +69,10 @@ public class pl_inventory : MonoBehaviour
                 break;
             case "Corpse":
                 equipmentInHand = newEquip;
-                corpseRb=newEquip.GetComponent<Rigidbody>();
-                corpseCollider = newEquip.GetComponent<Collider>();
-                corpseRb.isKinematic = true;
-                corpseCollider.enabled = false;
+                throwableRb = newEquip.GetComponent<Rigidbody>();
+                throwableCollider = newEquip.GetComponent<Collider>();
+                throwableRb.isKinematic = true;
+                throwableCollider.enabled = false;
                 newEquip.transform.position = equipmentPosition.position;
                 newEquip.transform.rotation = equipmentPosition.rotation;
                 newEquip.transform.parent = equipmentPosition;
@@ -74,7 +80,7 @@ public class pl_inventory : MonoBehaviour
                 SwitchState(corpse);
                 break;
             case "FullTrashSack":
-                if(!newEquip.TryGetComponent(out testScript tS))
+                if (!newEquip.TryGetComponent(out testScript tS))
                 {
                     equipmentInHand = newEquip;
                     newEquip.transform.position = equipmentPosition.position;
@@ -86,10 +92,10 @@ public class pl_inventory : MonoBehaviour
                     equipmentInHand = Instantiate(newEquip, equipmentPosition.position, equipmentPosition.rotation, equipmentPosition);
                     Destroy(equipmentInHand.GetComponent<testScript>());
                 }
-                corpseRb = equipmentInHand.GetComponent<Rigidbody>();
-                corpseCollider = equipmentInHand.GetComponent<Collider>();
-                corpseRb.isKinematic = true;
-                corpseCollider.enabled = false;
+                throwableRb = equipmentInHand.GetComponent<Rigidbody>();
+                throwableCollider = equipmentInHand.GetComponent<Collider>();
+                throwableRb.isKinematic = true;
+                throwableCollider.enabled = false;
                 SwitchState(fullTrashSack);
                 break;
             case "Broom":
@@ -100,7 +106,7 @@ public class pl_inventory : MonoBehaviour
                 SwitchState(empty);
                 break;
         }
-        
+
     }
     public void TakeFromHand()
     {
@@ -112,19 +118,19 @@ public class pl_inventory : MonoBehaviour
                 break;
             case "Corpse":
                 equipmentInHand.transform.parent = null;
-                corpseCollider.enabled = true;
-                corpseRb.isKinematic = false;
-                corpseRb.AddForce(cam.transform.forward*corpseThrowForce, ForceMode.Impulse);
+                throwableCollider.enabled = true;
+                throwableRb.isKinematic = false;
+                throwableRb.AddForce(cam.transform.forward * throwForce, ForceMode.Impulse);
                 equipmentInHand.transform.parent = null;
-                corpseRb = null;
+                throwableRb = null;
                 break;
             case "FullTrashSack":
                 equipmentInHand.transform.parent = null;
-                corpseCollider.enabled = true;
-                corpseRb.isKinematic = false;
-                corpseRb.AddForce(cam.transform.forward * corpseThrowForce, ForceMode.Impulse);
+                throwableCollider.enabled = true;
+                throwableRb.isKinematic = false;
+                throwableRb.AddForce(cam.transform.forward * throwForce, ForceMode.Impulse);
                 equipmentInHand.transform.parent = null;
-                corpseRb = null;
+                throwableRb = null;
                 break;
             case "Broom":
                 Destroy(equipmentInHand);
@@ -133,14 +139,14 @@ public class pl_inventory : MonoBehaviour
                 SwitchState(empty);
                 break;
         }
-        
+
         SwitchState(empty);
     }
 
     public void TrashCorpse()
     {
         Destroy(equipmentInHand);
-        
+
         SwitchState(empty);
     }
     public void SwitchState(InventoryState newState)
@@ -156,16 +162,23 @@ public class pl_inventory : MonoBehaviour
     {
         FireExFuelCurrent += FireExDamageInSeconds * Time.deltaTime * FireExFuelMultiplier;
         FireExFuelCurrent = Mathf.Clamp(FireExFuelCurrent, 0, FireExFuelMax);
-        
+
     }
     public void UnloadFireEx()
     {
         FireExFuelCurrent -= FireExDamageInSeconds * Time.deltaTime * FireExFuelMultiplier;
-        FireExFuelCurrent=Mathf.Clamp(FireExFuelCurrent, 0, FireExFuelMax);
+        FireExFuelCurrent = Mathf.Clamp(FireExFuelCurrent, 0, FireExFuelMax);
 
-        
+
         /*fireTMPUpdate.UpdateTMP(FireExFuelCurrent);*/
 
+    }
+
+    public void SpawnNewBlood(RaycastHit hitInfo)
+    {
+        
+        GameObject blood = Instantiate(bloodPrefab, hitInfo.point+Vector3.up, Quaternion.identity);
+        broomBloodMeterCurrent--;
     }
 }
 
@@ -181,18 +194,18 @@ public class FireExState : InventoryState
 {
     public override void OnStart(pl_inventory pI)
     {
-       
+
         Debug.Log("FireExStateOn");
         pI.equipmentInHandBool = true;
     }
-    public override void OnUpdate(pl_inventory pI) 
+    public override void OnUpdate(pl_inventory pI)
     {
         if (Input.GetMouseButtonDown(0))
         {
             Debug.Log("Use FireEx");
             pI.particleSys.Play();
 
-            
+
         }
         else if (Input.GetMouseButtonUp(0))
         {
@@ -200,10 +213,10 @@ public class FireExState : InventoryState
             pI.particleSys.Stop();
         }
 
-        if (Input.GetMouseButton(0)&&pI.FireExFuelCurrent>0)
+        if (Input.GetMouseButton(0) && pI.FireExFuelCurrent > 0)
         {
             pI.UnloadFireEx();
-            
+
             Ray r = new Ray(pI.cam.transform.position, pI.cam.transform.forward);
             if (Physics.Raycast(r, out RaycastHit hitInfo, pI.fireExRange))
             {
@@ -215,7 +228,7 @@ public class FireExState : InventoryState
                 }
             }
         }
-        else if(Input.GetMouseButton(0) && pI.FireExFuelCurrent <=0)
+        else if (Input.GetMouseButton(0) && pI.FireExFuelCurrent <= 0)
         {
             pI.particleSys.Stop();
         }
@@ -223,19 +236,66 @@ public class FireExState : InventoryState
     public override void OnEnd(pl_inventory pI)
     {
         Debug.Log("FireExStateOff");
-        
+
     }
 }
 
 public class BroomState : InventoryState
 {
-    public override void OnStart(pl_inventory pI) 
+    public override void OnStart(pl_inventory pI)
     {
         Debug.Log("BroomStateON");
         pI.equipmentInHandBool = true;
     }
-    public override void OnUpdate(pl_inventory pI) { }
-    public override void OnEnd(pl_inventory pI) 
+    public override void OnUpdate(pl_inventory pI)
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+
+            Debug.Log("Use Mop");
+            Ray r = new Ray(pI.cam.transform.position, pI.cam.transform.forward);
+            if (Physics.Raycast(r, out RaycastHit hitInfo, pI.broomRange))
+            {
+                if (pI.broomBloodMeterCurrent < pI.broomBloodMeterMax)
+                {
+                    if (hitInfo.collider.gameObject.TryGetComponent(out fireLogic fL) && pI.broomBloodMeterCurrent < pI.broomBloodMeterMax)
+                    {
+                        fL.CleanBlood();
+                        pI.broomBloodMeterCurrent++;
+                    }
+                    else if (hitInfo.collider.gameObject.CompareTag("Water") && pI.broomBloodMeterCurrent > 0)
+                    {
+                        pI.broomBloodMeterCurrent = 0; ;
+
+                    }
+                }
+                else
+                {
+                    if (!hitInfo.collider.gameObject.CompareTag("Water"))
+                    {
+                        pI.SpawnNewBlood(hitInfo);
+                    }
+                    else if (pI.broomBloodMeterCurrent > 0)
+                    {
+                        pI.broomBloodMeterCurrent=0;
+
+                    }
+                    
+                }
+                
+                
+            }
+
+
+
+
+
+
+        }
+
+
+    }
+    public override void OnEnd(pl_inventory pI)
     {
         Debug.Log("BroomStateOFF");
     }
@@ -254,7 +314,7 @@ public class CorpseState : InventoryState
             pI.TakeFromHand();
         }
     }
-    public override void OnEnd(pl_inventory pI) 
+    public override void OnEnd(pl_inventory pI)
     {
         Debug.Log("CorpseStateOFF");
     }
@@ -289,7 +349,7 @@ public class FullTrashSackState : InventoryState
     public override void OnEnd(pl_inventory pI)
     {
         Debug.Log("CorpseStateOFF");
-        
+
     }
 }
 

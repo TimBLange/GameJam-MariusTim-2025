@@ -12,7 +12,7 @@ public class buggyMove : MonoBehaviour
    
     private void Awake()
     {
-        meshAgent = GetComponent<NavMeshAgent>();
+        
         SwitchState(buggyStand);
     }
 

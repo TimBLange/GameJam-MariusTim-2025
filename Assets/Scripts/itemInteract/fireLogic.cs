@@ -6,10 +6,6 @@ public class fireLogic : MonoBehaviour
     [SerializeField] float lifeInSeconds;
     float startLifeTime;
 
-    private void Awake()
-    {
-        
-    }
     public void Extinguish(float damage)
     {
         if (lifeInSeconds <= 0)
@@ -20,7 +16,13 @@ public class fireLogic : MonoBehaviour
         lifeInSeconds = lifeInSeconds - damage*Time.deltaTime;
         
     }
+    public void CleanBlood()
+    {
+        Destroy(this.gameObject);
+        
 
+    }
+    
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
