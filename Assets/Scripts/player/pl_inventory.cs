@@ -33,7 +33,7 @@ public class pl_inventory : MonoBehaviour
     [Header("Broom")]
     [SerializeField] public float broomRange;
     [SerializeField] public int broomBloodMeterMax;
-    [SerializeField] public int broomBloodMeterCurrent;
+    public int broomBloodMeterCurrent;
     [SerializeField] public GameObject bloodPrefab;
     void Awake()
     {

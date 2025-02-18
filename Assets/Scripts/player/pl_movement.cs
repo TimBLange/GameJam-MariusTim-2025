@@ -24,14 +24,17 @@ public class pl_movement : MonoBehaviour
     public playerState crouchState = new PsCrouch();
     public playerState standingState = new PsStanding();
     private playerState currentState;
-    void Awake()
+    void Start()
     {
         rB = GetComponent<Rigidbody>();
         plCollider.height = normalHeight;
+        
+    }
+    private void Awake()
+    {
         SwitchState(standingState);
         currentSpeed = walkSpeed;
     }
-
     private void Update()
     {
         currentState.OnUpdate(this);
