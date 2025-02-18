@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1622735140554555543}
   - component: {fileID: 5203742707753978745}
   - component: {fileID: 3524034520112973002}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Corpse
   m_TagString: Corpse
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 5022581410912304454}
   - component: {fileID: 976406827940923049}
   - component: {fileID: 7826712757862613841}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

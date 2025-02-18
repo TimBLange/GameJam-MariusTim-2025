@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9174592033345419178}
   - component: {fileID: 3943551250153607087}
   - component: {fileID: 3520304571138068493}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FirePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 6676916644815720944}
   - component: {fileID: 8201776153497783838}
   - component: {fileID: 8781795464277739368}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}

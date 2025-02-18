@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2345848045973153339}
   - component: {fileID: 5274739974202865249}
   - component: {fileID: 2141289492764752129}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlayerHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5047552885404840714}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CamPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 619853620587913113}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HandBob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 1272505117586697571}
   - component: {fileID: 5814529024723793968}
   - component: {fileID: 677456199146217128}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: PlayerNumber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 2039480822449694289}
   - component: {fileID: 6127160536550825817}
   - component: {fileID: 1104266140399906017}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,7 +396,7 @@ GameObject:
   - component: {fileID: 8883178515657271398}
   - component: {fileID: 511303126138787495}
   - component: {fileID: 3897278986167485738}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: TMPLookAtHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 397899843282493791}
   - component: {fileID: 6635990351171385291}
   - component: {fileID: 1670804912792431636}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -634,7 +634,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5676141858016209251}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EquipHand
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -672,7 +672,7 @@ GameObject:
   - component: {fileID: 2515582200440692264}
   - component: {fileID: 3108015439689865601}
   - component: {fileID: 445943479618602523}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -844,7 +844,7 @@ GameObject:
   - component: {fileID: 8743785937319333634}
   - component: {fileID: 660097342961860185}
   - component: {fileID: 350230589310257883}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
