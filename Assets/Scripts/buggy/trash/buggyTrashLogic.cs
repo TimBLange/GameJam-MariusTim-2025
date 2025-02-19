@@ -22,10 +22,11 @@ public class buggyTrashLogic : MonoBehaviour,IInteractable
         {
             if(currentCorpseCount >= minCorpseSackCount)
             {
+                
                 plI.PutInHand(fullTrashSack);
                 currentCorpseCount = 0;
                 UpdateTMP();
-
+                trashCountManager.instance.CalcTrash();
             }
             
         }

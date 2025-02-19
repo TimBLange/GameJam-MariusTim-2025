@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 2249667381569429817}
   - component: {fileID: 5259109093629684169}
   - component: {fileID: 923892887538698341}
-  - component: {fileID: 309619129727373588}
+  - component: {fileID: 5167665776820689350}
   m_Layer: 3
   m_Name: Water
   m_TagString: Water
@@ -166,7 +166,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &309619129727373588
+--- !u!114 &5167665776820689350
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,11 +175,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 314331889737135736}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c091316c42823448b1cb392bad1fe94, type: 3}
+  m_Script: {fileID: 11500000, guid: d695bbcc3cb50ea4999a8ebc6fae63f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipment: {fileID: 0}
-  equipmentOnBuggy: {fileID: 0}
 --- !u!1 &1720509277271326107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1646,7 +1644,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1
-  m_Speed: 1000
+  m_Speed: 3.8
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 300

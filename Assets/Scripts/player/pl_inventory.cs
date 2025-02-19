@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class pl_inventory : MonoBehaviour
@@ -23,7 +24,7 @@ public class pl_inventory : MonoBehaviour
     [SerializeField] public float FireExFuelMax;
     [SerializeField] public float FireExFuelCurrent;
     [SerializeField] public float FireExFuelMultiplier;
-    [SerializeField] public fireExUpdate fireTMPUpdate;
+    [SerializeField] public TMPro.TextMeshProUGUI fireTMP;
 
     [Header("Throwables")]
     [SerializeField] float throwForce;
@@ -41,7 +42,7 @@ public class pl_inventory : MonoBehaviour
     
     void Awake()
     {
-        fireTMPUpdate.UpdateTMP(100);
+        
         FireExFuelCurrent = FireExFuelMax;
         cam = GameObject.FindGameObjectWithTag("MainCamera");
         SwitchState(empty);
@@ -173,7 +174,7 @@ public class pl_inventory : MonoBehaviour
         FireExFuelCurrent = Mathf.Clamp(FireExFuelCurrent, 0, FireExFuelMax);
 
 
-        /*fireTMPUpdate.UpdateTMP(FireExFuelCurrent);*/
+        
 
     }
 
@@ -182,6 +183,7 @@ public class pl_inventory : MonoBehaviour
         
         GameObject blood = Instantiate(bloodPrefab, hitInfo.point+Vector3.up, Quaternion.identity);
         broomBloodMeterCurrent--;
+        trashCountManager.instance.CalcTrash();
     }
 }
 
@@ -197,9 +199,10 @@ public class FireExState : InventoryState
 {
     public override void OnStart(pl_inventory pI)
     {
-
+        pI.fireTMP.gameObject.SetActive(true);
         Debug.Log("FireExStateOn");
         pI.equipmentInHandBool = true;
+        pI.fireTMP.text = pI.FireExFuelCurrent.ToString("0")+"%";
     }
     public override void OnUpdate(pl_inventory pI)
     {
@@ -219,7 +222,7 @@ public class FireExState : InventoryState
         if (Input.GetMouseButton(0) && pI.FireExFuelCurrent > 0)
         {
             pI.UnloadFireEx();
-
+            pI.fireTMP.text = pI.FireExFuelCurrent.ToString("0") + "%";
             Ray r = new Ray(pI.cam.transform.position, pI.cam.transform.forward);
             if (Physics.Raycast(r, out RaycastHit hitInfo, pI.fireExRange))
             {
@@ -239,7 +242,7 @@ public class FireExState : InventoryState
     public override void OnEnd(pl_inventory pI)
     {
         Debug.Log("FireExStateOff");
-
+        pI.fireTMP.gameObject.SetActive(false);
     }
 }
 
@@ -254,7 +257,7 @@ public class BroomState : InventoryState
     {
         if (Input.GetMouseButtonDown(0))
         {
-            pI.broomAnim.SetTrigger("broom");
+            
             Debug.Log("Use Mop");
             Ray r = new Ray(pI.cam.transform.position, pI.cam.transform.forward);
             if (Physics.Raycast(r, out RaycastHit hitInfo, pI.broomRange))
@@ -274,16 +277,8 @@ public class BroomState : InventoryState
                 }
                 else
                 {
-                    if (!hitInfo.collider.gameObject.CompareTag("Water"))
-                    {
-                        pI.SpawnNewBlood(hitInfo);
-                    }
-                    else if (pI.broomBloodMeterCurrent > 0)
-                    {
-                        pI.broomBloodMeterCurrent=0;
+                    pI.SpawnNewBlood(hitInfo);
 
-                    }
-                    
                 }
                 
                 
