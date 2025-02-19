@@ -23,7 +23,8 @@ public class pl_cam_move : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() //Yo, wenn man das auf FixedUpdate stellt statt nur Update dann is das jittering weg aber man muss die sens neu konfigurieren
+                // (er meinte auch, dass alles was physics benutzt in FixedUpdate sollte)
     {
         float inputX = Input.GetAxis("Mouse X") * sens;
         float inputY = Input.GetAxis("Mouse Y") * sens;
