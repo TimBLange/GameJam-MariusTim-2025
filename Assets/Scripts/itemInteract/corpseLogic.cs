@@ -4,9 +4,11 @@ public class corpseLogic : MonoBehaviour, IInteractable
 {
     pl_inventory plI;
     [SerializeField] trashCountManager tcm;
+    
     private void Awake()
     {
         plI = GameObject.FindWithTag("Player").GetComponent<pl_inventory>();
+        
     }
     public void Interact()
     {

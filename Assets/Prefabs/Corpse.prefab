@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1765769311660996885}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.322, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 5022581410912304454}
   - component: {fileID: 976406827940923049}
   - component: {fileID: 7826712757862613841}
+  - component: {fileID: 5486165952894744650}
   m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
@@ -135,13 +136,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6920672393053473508}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.6088465, y: 0.35662428, z: -0.61409044, w: 0.35357887}
+  m_LocalPosition: {x: 0.01548862, y: 0.21749848, z: -0.00013277697}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4316228004808773564}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 60.291, y: -89.509, z: -180}
 --- !u!33 &976406827940923049
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -149,7 +150,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6920672393053473508}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 2136982261520300157, guid: f435c1e13f6589f4aa3582ed86a1179d, type: 3}
 --- !u!23 &7826712757862613841
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -195,3 +196,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5486165952894744650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6920672393053473508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5399e1f955f1ba46a1185227f770767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshes:
+  - {fileID: 5690975394302024261, guid: 760dadca1bd4db2419eac646954bb74d, type: 3}
+  - {fileID: 2136982261520300157, guid: f435c1e13f6589f4aa3582ed86a1179d, type: 3}
+  - {fileID: -3145121115808851403, guid: 97cba9265a39b704e9817fc358b5db58, type: 3}
+  - {fileID: 355170680091915004, guid: 5f5c7e4db89e0af4ab33c64d2ddd1937, type: 3}
+  - {fileID: 8788604890005858653, guid: 933db7e7ab5bc9b48b5b8dc6d220a336, type: 3}
+  mR: {fileID: 976406827940923049}
