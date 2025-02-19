@@ -12,6 +12,9 @@ TagManager:
   - FullTrashSack
   - Water
   - OutOfBounds
+  - Fire
+  - Blood
+  - TrashCompactor
   layers:
   - Default
   - TransparentFX

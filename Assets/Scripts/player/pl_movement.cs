@@ -63,9 +63,10 @@ public class pl_movement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Ray r = new Ray(transform.position, -transform.up);
-            if (Physics.Raycast(r, out RaycastHit hitInfo, currentHeight/2 +0.2f))
+            Ray r = new Ray(transform.position-new Vector3(0, currentHeight / 2, 0), -transform.up);
+            if (Physics.Raycast(r, out RaycastHit hitInfo,0.1f ))
             {
+                if(hitInfo.transform.tag!="Player")
                 rB.AddForce(Vector3.up * currentJumpForce, ForceMode.Impulse);
             }
 

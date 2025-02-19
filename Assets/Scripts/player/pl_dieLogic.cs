@@ -33,6 +33,7 @@ public class pl_dieLogic : MonoBehaviour
     }
     public void Die()
     {
+        
         StartCoroutine(dieCoroutine());
 
 
@@ -42,7 +43,7 @@ public class pl_dieLogic : MonoBehaviour
 
         }
         GameObject b = Instantiate(blood, transform.position+transform.up, Quaternion.identity);
-
+        trashCountManager.instance.CalcTrash();
 
     }
     private void resetPosition()

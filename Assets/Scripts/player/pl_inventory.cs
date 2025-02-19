@@ -35,9 +35,12 @@ public class pl_inventory : MonoBehaviour
     [SerializeField] public int broomBloodMeterMax;
     public int broomBloodMeterCurrent;
     [SerializeField] public GameObject bloodPrefab;
+    public Animator broomAnim;
+
+   
+    
     void Awake()
     {
-
         fireTMPUpdate.UpdateTMP(100);
         FireExFuelCurrent = FireExFuelMax;
         cam = GameObject.FindGameObjectWithTag("MainCamera");
@@ -100,6 +103,7 @@ public class pl_inventory : MonoBehaviour
                 break;
             case "Broom":
                 equipmentInHand = Instantiate(newEquip, equipmentPosition.position, equipmentPosition.rotation, equipmentPosition);
+                broomAnim = newEquip.GetComponent<Animator>();
                 SwitchState(broom);
                 break;
             default:
@@ -146,7 +150,6 @@ public class pl_inventory : MonoBehaviour
     public void TrashCorpse()
     {
         Destroy(equipmentInHand);
-
         SwitchState(empty);
     }
     public void SwitchState(InventoryState newState)
@@ -251,7 +254,7 @@ public class BroomState : InventoryState
     {
         if (Input.GetMouseButtonDown(0))
         {
-
+            pI.broomAnim.SetTrigger("broom");
             Debug.Log("Use Mop");
             Ray r = new Ray(pI.cam.transform.position, pI.cam.transform.forward);
             if (Physics.Raycast(r, out RaycastHit hitInfo, pI.broomRange))

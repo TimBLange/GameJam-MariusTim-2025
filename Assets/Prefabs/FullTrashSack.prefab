@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 791462001579794881}
   - component: {fileID: 3038404006024472458}
   - component: {fileID: 8361665441582857732}
+  - component: {fileID: 9078883166665024424}
   m_Layer: 0
   m_Name: FullTrashSack
   m_TagString: FullTrashSack
@@ -96,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a62cb2f6f6d444d9c87b5b516a5bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tcm: {fileID: 2182833154990448780, guid: 825521fb8ecabcc48a8499b56972e823, type: 3}
 --- !u!114 &8361665441582857732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,6 +108,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cc57f9a6e95a3246a0c2993767bbc60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9078883166665024424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942834541377860299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe6733d47ec00544b7e9b6198b0f2db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2382743321589447570

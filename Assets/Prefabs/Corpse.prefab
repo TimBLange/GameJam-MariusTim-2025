@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1622735140554555543}
   - component: {fileID: 5203742707753978745}
   - component: {fileID: 3524034520112973002}
+  - component: {fileID: 5412827193657107244}
   m_Layer: 3
   m_Name: Corpse
   m_TagString: Corpse
@@ -47,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a62cb2f6f6d444d9c87b5b516a5bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tcm: {fileID: 2182833154990448780, guid: 825521fb8ecabcc48a8499b56972e823, type: 3}
 --- !u!65 &5203742707753978745
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -95,6 +97,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &5412827193657107244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765769311660996885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe6733d47ec00544b7e9b6198b0f2db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6920672393053473508
 GameObject:
   m_ObjectHideFlags: 0
