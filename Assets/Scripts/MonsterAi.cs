@@ -11,17 +11,27 @@ public class MonsterAi : MonoBehaviour
     public MonsterStates stand = new MonsterStand();
     [HideInInspector] public Vector3 nextDestination;
     [SerializeField] public float normalSpeed;
+    [SerializeField] public float runSpeed;
     [SerializeField] float maxDistance;
+    [SerializeField] float waitStand;
     [HideInInspector] public GameObject player;
     public pl_movement plMovement;
     [SerializeField] LayerMask layerM;
     public bool inTrigger;
+    [SerializeField] public GameObject[] patrolPoints;
+    [SerializeField] AudioClip[] monsterSounds;
+    AudioSource aS;
     void Start()
     {
+        aS = GetComponent<AudioSource>();
+        patrolPoints = GameObject.FindGameObjectsWithTag("PatrolPoints");
         inTrigger = false;
         navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
         plMovement = player.GetComponent<pl_movement>();
+        runSpeed = plMovement.runSpeed + 2;
+        normalSpeed = plMovement.walkSpeed;
+        NewPos();
         SwitchStates(patrol);
     }
     private void LateUpdate()
@@ -67,7 +77,6 @@ public class MonsterAi : MonoBehaviour
         RaycastHit hit;
         if (Physics.Linecast(transform.position + transform.up * 1.5f, player.transform.position, out hit,layerM))
         {
-            Debug.Log(hit.transform.name);
             if (hit.transform==player.transform)
             {
                 return true;
@@ -99,6 +108,19 @@ public class MonsterAi : MonoBehaviour
         }
         
     }
+    public void NewPos()
+    {
+        SwitchStates(stand);
+        StartCoroutine(NewPosEnum());
+
+    }
+    IEnumerator NewPosEnum()
+    {
+        nextDestination = patrolPoints[Random.Range(0, patrolPoints.Length - 1)].transform.position;
+        yield return new WaitForSeconds(waitStand);
+        
+        SwitchStates(patrol);
+    }
     public void PlayerDetected()
     {
         StartCoroutine(PlayerDetectedEnum());
@@ -106,7 +128,9 @@ public class MonsterAi : MonoBehaviour
 
     IEnumerator PlayerDetectedEnum()
     {
+        
         SwitchStates(stand);
+        PlaySound();
         navMeshAgent.destination = transform.position;
         gameObject.transform.LookAt(player.transform.position);
         yield return new WaitForSeconds(0.5f);
@@ -114,6 +138,11 @@ public class MonsterAi : MonoBehaviour
         SwitchStates(hunt);
     }
     
+    public void PlaySound()
+    {
+        aS.clip = monsterSounds[Random.Range(0, monsterSounds.Length - 1)];
+        aS.Play();
+    }
 }
 
 public abstract class MonsterStates
@@ -133,10 +162,16 @@ public class MonsterPatrol: MonsterStates
     }
     public override void OnUpdate(MonsterAi mAI) 
     {
+        if(mAI.navMeshAgent.remainingDistance <= 0.5f)
+        {
+            mAI.NewPos();
+        }
+        mAI.Walk();
         if (mAI.inTrigger && mAI.CheckIfInSight())
         {
             mAI.PlayerDetected();
         }
+
     }
     public override void OnEnd(MonsterAi mAI)
     {
@@ -167,14 +202,14 @@ public class MonsterHunt : MonsterStates
     public override void OnStart(MonsterAi mAI)
     {
         Debug.Log("Hunting");
-        mAI.navMeshAgent.speed = mAI.plMovement.runSpeed + 0.5f;
+        mAI.navMeshAgent.speed = mAI.runSpeed;
     }
     public override void OnUpdate(MonsterAi mAI) 
     {
         if (!mAI.CheckIfInSight() || !mAI.inTrigger) 
         {
             if(mAI.navMeshAgent.remainingDistance <= 0.5f)
-            mAI.SwitchStates(mAI.patrol);
+            mAI.NewPos();
         }
         if (mAI.CheckIfInSight() && mAI.CheckInDistance())
         {
@@ -183,5 +218,8 @@ public class MonsterHunt : MonsterStates
         
         mAI.Walk();
     }
-    public override void OnEnd(MonsterAi mAI) { }
+    public override void OnEnd(MonsterAi mAI) 
+    { 
+        mAI.PlaySound();
+    }
 }

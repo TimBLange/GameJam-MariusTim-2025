@@ -44,12 +44,13 @@ public class trashCountManager : MonoBehaviour
     {
         CountTrash();
         currentPercent = ( currentCleanedTrash / maxTrashCount) * 100;
-        /*currentPercent = Mathf.Clamp(currentPercent, 0, 100);*/
+        currentPercent = Mathf.Clamp(currentPercent, 0, 100);
         Debug.Log("trashCount  "+ maxTrashCount);
         Debug.Log("cleanedtrashCount  " + currentCleanedTrash);
         Debug.Log("Percentage " + currentPercent);
         trashSlider.value = currentPercent;
         percenttageTMP.text = currentPercent.ToString("0") + "%";
+        Debug.Log(currentPercent);
         if (currentPercent >= 100)
         {
             eBL.ActivateButton();

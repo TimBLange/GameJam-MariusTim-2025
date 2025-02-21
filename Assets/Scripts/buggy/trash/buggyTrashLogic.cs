@@ -10,9 +10,11 @@ public class buggyTrashLogic : MonoBehaviour,IInteractable
     [SerializeField] int currentCorpseCount=0;
     [SerializeField] TMPro.TextMeshPro trashTMP;
     pl_inventory plI;
-
+    AudioSource aS;
+    [SerializeField] AudioClip inSound;
     private void Awake()
     {
+        aS = GetComponent<AudioSource>();
         plI = GameObject.FindWithTag("Player").GetComponent<pl_inventory>();
         UpdateTMP();
     }
@@ -22,7 +24,8 @@ public class buggyTrashLogic : MonoBehaviour,IInteractable
         {
             if(currentCorpseCount >= minCorpseSackCount)
             {
-                
+                aS.clip = inSound;
+                aS.Play();
                 plI.PutInHand(fullTrashSack);
                 currentCorpseCount = 0;
                 UpdateTMP();
@@ -32,9 +35,11 @@ public class buggyTrashLogic : MonoBehaviour,IInteractable
         }
         else
         {
+            
 
             if (plI.equipmentInHand.CompareTag("Corpse"))
             {
+                
                 FillTrash();
             }
         }
@@ -52,6 +57,8 @@ public class buggyTrashLogic : MonoBehaviour,IInteractable
     {
         if (currentCorpseCount != maxCorpseCount)
         {
+            aS.clip = inSound;
+            aS.Play();
             currentCorpseCount++;
             UpdateTMP();
             plI.TrashCorpse();

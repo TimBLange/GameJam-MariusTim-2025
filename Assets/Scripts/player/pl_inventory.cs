@@ -25,24 +25,28 @@ public class pl_inventory : MonoBehaviour
     [SerializeField] public float FireExFuelCurrent;
     [SerializeField] public float FireExFuelMultiplier;
     [SerializeField] public TMPro.TextMeshProUGUI fireTMP;
-
+    [SerializeField] public AudioClip firePickUpSound;
+    [SerializeField] public AudioClip fireUseSound;
+    [SerializeField] public AudioClip PutDownSound;
     [Header("Throwables")]
     [SerializeField] float throwForce;
     [HideInInspector] public Rigidbody throwableRb;
     [HideInInspector] public Collider throwableCollider;
-
+    [SerializeField] public AudioClip corpsePickUp;
+    [SerializeField] public AudioClip corpseThrow;
     [Header("Broom")]
     [SerializeField] public float broomRange;
     [SerializeField] public int broomBloodMeterMax;
     public int broomBloodMeterCurrent;
     [SerializeField] public GameObject bloodPrefab;
-    public Animator broomAnim;
+    [SerializeField] public AudioClip bloodSound;
+    [SerializeField] public AudioClip broomPutDownSound;
 
-   
+    public AudioSource aS;
     
     void Awake()
     {
-        
+        aS = GetComponent<AudioSource>();
         FireExFuelCurrent = FireExFuelMax;
         cam = GameObject.FindGameObjectWithTag("MainCamera");
         SwitchState(empty);
@@ -69,9 +73,10 @@ public class pl_inventory : MonoBehaviour
                 equipmentInHand = Instantiate(newEquip, equipmentPosition.position, equipmentPosition.rotation, equipmentPosition);
                 SwitchState(fireEx);
                 particleSys = equipmentInHand.transform.GetChild(1).gameObject.GetComponent<ParticleSystem>();
-
+                aS.clip = firePickUpSound;
                 break;
             case "Corpse":
+                aS.clip = corpsePickUp;
                 equipmentInHand = newEquip;
                 throwableRb = newEquip.GetComponent<Rigidbody>();
                 throwableCollider = newEquip.GetComponent<Collider>();
@@ -84,6 +89,7 @@ public class pl_inventory : MonoBehaviour
                 SwitchState(corpse);
                 break;
             case "FullTrashSack":
+                aS.clip = corpsePickUp;
                 if (!newEquip.TryGetComponent(out testScript tS))
                 {
                     equipmentInHand = newEquip;
@@ -104,14 +110,15 @@ public class pl_inventory : MonoBehaviour
                 break;
             case "Broom":
                 equipmentInHand = Instantiate(newEquip, equipmentPosition.position, equipmentPosition.rotation, equipmentPosition);
-                broomAnim = newEquip.GetComponent<Animator>();
+                aS.clip = broomPutDownSound;
                 SwitchState(broom);
+                
                 break;
             default:
                 SwitchState(empty);
                 break;
         }
-
+        aS.Play();
     }
     public void TakeFromHand()
     {
@@ -120,8 +127,10 @@ public class pl_inventory : MonoBehaviour
             case "FireEx":
                 particleSys = null;
                 Destroy(equipmentInHand);
+                aS.clip = PutDownSound;
                 break;
             case "Corpse":
+                aS.clip = corpseThrow;
                 equipmentInHand.transform.parent = null;
                 throwableCollider.enabled = true;
                 throwableRb.isKinematic = false;
@@ -130,6 +139,7 @@ public class pl_inventory : MonoBehaviour
                 throwableRb = null;
                 break;
             case "FullTrashSack":
+                aS.clip = corpseThrow;
                 equipmentInHand.transform.parent = null;
                 throwableCollider.enabled = true;
                 throwableRb.isKinematic = false;
@@ -139,12 +149,14 @@ public class pl_inventory : MonoBehaviour
                 break;
             case "Broom":
                 Destroy(equipmentInHand);
+                
                 break;
             default:
                 SwitchState(empty);
                 break;
         }
 
+        aS.Play();
         SwitchState(empty);
     }
 
@@ -208,13 +220,19 @@ public class FireExState : InventoryState
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if (pI.FireExFuelCurrent > 0)
+            {
+                pI.aS.clip = pI.fireUseSound;
+                pI.aS.Play();
+            }
+            
             Debug.Log("Use FireEx");
             pI.particleSys.Play();
-
 
         }
         else if (Input.GetMouseButtonUp(0))
         {
+            pI.aS.Pause();
             Debug.Log("Stop Use FireEx");
             pI.particleSys.Stop();
         }
@@ -262,21 +280,22 @@ public class BroomState : InventoryState
             Ray r = new Ray(pI.cam.transform.position, pI.cam.transform.forward);
             if (Physics.Raycast(r, out RaycastHit hitInfo, pI.broomRange))
             {
+                
                 if (pI.broomBloodMeterCurrent < pI.broomBloodMeterMax)
                 {
                     if (hitInfo.collider.gameObject.TryGetComponent(out fireLogic fL) && pI.broomBloodMeterCurrent < pI.broomBloodMeterMax)
                     {
+                        pI.aS.clip = pI.bloodSound;
+                        pI.aS.Play();
                         fL.CleanBlood();
                         pI.broomBloodMeterCurrent++;
                     }
-                    else if (hitInfo.collider.gameObject.CompareTag("Water") && pI.broomBloodMeterCurrent > 0)
-                    {
-                        pI.broomBloodMeterCurrent = 0; ;
-
-                    }
+                    
                 }
                 else
                 {
+                    pI.aS.clip = pI.bloodSound;
+                    pI.aS.Play();
                     pI.SpawnNewBlood(hitInfo);
 
                 }

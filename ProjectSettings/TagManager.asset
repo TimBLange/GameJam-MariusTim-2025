@@ -16,6 +16,7 @@ TagManager:
   - Blood
   - TrashCompactor
   - Wall
+  - PatrolPoints
   layers:
   - Default
   - TransparentFX

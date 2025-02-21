@@ -7,11 +7,18 @@ public class pl_headbobbing : MonoBehaviour
     [Range(0.001f, 0.01f)] [SerializeField] float amount = 0.002f;
     [Range(1f, 30f)] [SerializeField] float frequenzy = 10f;
     [Range(10f, 100f)] [SerializeField] float smooth = 10f;
+    [SerializeField] AudioSource aS;
     float mult=1.5f;
     float currentMult = 1f;
     Vector3 startPos;
     void Start()
     {
+        if (aS != null)
+        {
+            aS.Play();
+            aS.Pause();
+        }
+        
         startPos = pivotCam.transform.localPosition;
     }
 
@@ -22,6 +29,7 @@ public class pl_headbobbing : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             currentMult = mult;
+            
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
@@ -43,11 +51,20 @@ public class pl_headbobbing : MonoBehaviour
     }
     private void StopBob()
     {
+        if (aS != null && aS.isPlaying)
+        {
+            aS.Pause();
+        }
+
         if (pivotCam.transform.localPosition == startPos) return;
         pivotCam.transform.localPosition = Vector3.Lerp(pivotCam.transform.localPosition, startPos, Time.deltaTime);
     }
     private Vector3 StartBob()
     {
+        if(aS!=null && !aS.isPlaying)
+        {
+            aS.UnPause();
+        }
         Vector3 pos = Vector3.zero;
         pos.y += Mathf.Lerp(pos.y, Mathf.Sin(Time.time * frequenzy) * amount *1.4f*currentMult, smooth * Time.deltaTime);
         pos.y += Mathf.Lerp(pos.y, Mathf.Cos(Time.time * frequenzy/2) * amount * 1.4f * currentMult, smooth * Time.deltaTime);

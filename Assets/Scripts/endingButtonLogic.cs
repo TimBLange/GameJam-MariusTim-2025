@@ -15,6 +15,7 @@ public class endingButtonLogic : MonoBehaviour,IInteractable
             Debug.Log("YOU HAVE WON THE GAME");
             canBePressed = false;
         }
+        else
         Debug.Log("EHHH not finished yet");
     }
     public void ActivateButton()

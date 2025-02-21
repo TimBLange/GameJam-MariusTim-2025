@@ -9,7 +9,7 @@ public class buggyMove : MonoBehaviour
     BuggyState currentState;
     public BuggyState buggyDrive = new BuggyDriveState();
     public BuggyState buggyStand = new BuggyStandState();
-   
+    public AudioSource aS;
     private void Awake()
     {
         
@@ -64,7 +64,7 @@ public class BuggyStandState : BuggyState
     public override void OnStart(buggyMove bM)
     {
         Debug.Log("BuggyStand");
-        
+        bM.aS.volume = 0.100f;
 
     }
     public override void OnLateUpdate(buggyMove bM)
@@ -82,9 +82,8 @@ public class BuggyDriveState : BuggyState
     public override void OnStart(buggyMove bM)
     {
         Debug.Log("BuggyDrives");
-       
 
-
+        bM.aS.volume = 0.225f;
     }
     public override void OnLateUpdate(buggyMove bM)
     {
