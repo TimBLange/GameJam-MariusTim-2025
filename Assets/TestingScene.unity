@@ -790,6 +790,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 531814190}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &604592784 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 351856169475499005, guid: d075b395aabc0e241b864ad9a6d6346c, type: 3}
+  m_PrefabInstance: {fileID: 106490761}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &649445920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -847,6 +852,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6722e88e5c0e584296e589c9530bb33, type: 3}
+--- !u!1 &696003310 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 351856169475499005, guid: d075b395aabc0e241b864ad9a6d6346c, type: 3}
+  m_PrefabInstance: {fileID: 2090782799}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &743264561
 GameObject:
   m_ObjectHideFlags: 0
@@ -1249,6 +1259,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e823444cfc9e929468980ee5a6ae38d9, type: 3}
+--- !u!1 &942641430 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 351856169475499005, guid: d075b395aabc0e241b864ad9a6d6346c, type: 3}
+  m_PrefabInstance: {fileID: 33320517}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &948250169
 GameObject:
   m_ObjectHideFlags: 0
@@ -1406,6 +1421,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1350350355}
   m_LocalEulerAnglesHint: {x: -13.123, y: 0, z: 0}
+--- !u!1 &1161720514 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 351856169475499005, guid: d075b395aabc0e241b864ad9a6d6346c, type: 3}
+  m_PrefabInstance: {fileID: 7168046858991439117}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1350350354
 GameObject:
   m_ObjectHideFlags: 0
@@ -3050,6 +3070,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4738310386007784124, guid: c1150fa97e352ed44a9428ed72f2f330, type: 3}
+      propertyPath: monsterSounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738310386007784124, guid: c1150fa97e352ed44a9428ed72f2f330, type: 3}
+      propertyPath: 'patrolPoints.Array.data[0]'
+      value: 
+      objectReference: {fileID: 696003310}
+    - target: {fileID: 4738310386007784124, guid: c1150fa97e352ed44a9428ed72f2f330, type: 3}
+      propertyPath: 'patrolPoints.Array.data[1]'
+      value: 
+      objectReference: {fileID: 604592784}
+    - target: {fileID: 4738310386007784124, guid: c1150fa97e352ed44a9428ed72f2f330, type: 3}
+      propertyPath: 'patrolPoints.Array.data[2]'
+      value: 
+      objectReference: {fileID: 942641430}
+    - target: {fileID: 4738310386007784124, guid: c1150fa97e352ed44a9428ed72f2f330, type: 3}
+      propertyPath: 'patrolPoints.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1161720514}
+    - target: {fileID: 4738310386007784124, guid: c1150fa97e352ed44a9428ed72f2f330, type: 3}
+      propertyPath: 'monsterSounds.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: e6562d70446e23740992d2471ddbc580, type: 3}
+    - target: {fileID: 4738310386007784124, guid: c1150fa97e352ed44a9428ed72f2f330, type: 3}
+      propertyPath: 'monsterSounds.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: cd3aa296c933ee84d9f14519bfdd21fa, type: 3}
+    - target: {fileID: 4738310386007784124, guid: c1150fa97e352ed44a9428ed72f2f330, type: 3}
+      propertyPath: 'monsterSounds.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 8b51ed897d8f1bd4597229d1bd173696, type: 3}
+    - target: {fileID: 4738310386007784124, guid: c1150fa97e352ed44a9428ed72f2f330, type: 3}
+      propertyPath: 'monsterSounds.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: e6562d70446e23740992d2471ddbc580, type: 3}
+    - target: {fileID: 4738310386007784124, guid: c1150fa97e352ed44a9428ed72f2f330, type: 3}
+      propertyPath: 'monsterSounds.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 8b51ed897d8f1bd4597229d1bd173696, type: 3}
     - target: {fileID: 7140148773299999309, guid: c1150fa97e352ed44a9428ed72f2f330, type: 3}
       propertyPath: m_Name
       value: Monster
