@@ -7,7 +7,7 @@ public class trashCountManager : MonoBehaviour
 
     [SerializeField] Slider trashSlider;
     [SerializeField] TMPro.TextMeshProUGUI percenttageTMP;
-
+    [SerializeField] endingButtonLogic eBL;
     private float currentTrashCount;
     private float lastTrashCount;
     private float maxTrashCount;
@@ -50,6 +50,10 @@ public class trashCountManager : MonoBehaviour
         Debug.Log("Percentage " + currentPercent);
         trashSlider.value = currentPercent;
         percenttageTMP.text = currentPercent.ToString("0") + "%";
+        if (currentPercent >= 100)
+        {
+            eBL.ActivateButton();
+        }
     }
     private void CountBlood()
     {
