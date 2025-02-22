@@ -1474,7 +1474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnPosition: {fileID: 0}
-  janitorCount: 1985
+  janitorCount: 1156
   janitorTMP: {fileID: 677456199146217128}
   redScreen: {fileID: 4645032019912843207}
   blood: {fileID: 1885281173111678458, guid: 177a362a6c57e374b8e2f6846167b9c7, type: 3}

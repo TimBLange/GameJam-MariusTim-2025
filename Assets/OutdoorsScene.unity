@@ -2405,10 +2405,6 @@ PrefabInstance:
       propertyPath: eBL
       value: 
       objectReference: {fileID: 103916415}
-    - target: {fileID: 3466179123042010585, guid: 825521fb8ecabcc48a8499b56972e823, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5738167131628747601, guid: 825521fb8ecabcc48a8499b56972e823, type: 3}
       propertyPath: m_Name
       value: Player
