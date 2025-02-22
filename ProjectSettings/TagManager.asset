@@ -17,6 +17,7 @@ TagManager:
   - TrashCompactor
   - Wall
   - PatrolPoints
+  - SceneManager
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,6 @@ TagManager:
   - UI
   - PostProcess
   - Detectable
-  - 
   - 
   - 
   - 

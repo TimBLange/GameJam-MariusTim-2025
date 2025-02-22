@@ -3,8 +3,10 @@ using UnityEngine;
 public class endingButtonLogic : MonoBehaviour,IInteractable
 {
     bool canBePressed;
+    sceneLoading scM;
     void Start()
     {
+        scM = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<sceneLoading>();
         canBePressed = false;
     }
 
@@ -13,6 +15,7 @@ public class endingButtonLogic : MonoBehaviour,IInteractable
         if (canBePressed)
         {
             Debug.Log("YOU HAVE WON THE GAME");
+            scM.LoadScene("Ending");
             canBePressed = false;
         }
         else
