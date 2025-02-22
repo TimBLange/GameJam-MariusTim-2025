@@ -21,6 +21,7 @@ public class MonsterAi : MonoBehaviour
     [SerializeField] public GameObject[] patrolPoints;
     [SerializeField] AudioClip[] monsterSounds;
     AudioSource aS;
+    public Vector3 currentDestination;
     void Start()
     {
         aS = GetComponent<AudioSource>();
@@ -116,9 +117,27 @@ public class MonsterAi : MonoBehaviour
     }
     IEnumerator NewPosEnum()
     {
-        nextDestination = patrolPoints[Random.Range(0, patrolPoints.Length - 1)].transform.position;
+        Transform closestPoint = null;
+        float shortestDistance = Mathf.Infinity;
+
+        foreach (GameObject point in patrolPoints)
+        {
+            
+            float distance = Vector3.Distance(transform.position, point.transform.position);
+            if (distance < shortestDistance&& point.transform.position != nextDestination)
+            {
+                shortestDistance = distance;
+                closestPoint = point.transform;
+            }
+        }
+
+        if (closestPoint != null)
+        {
+            nextDestination = closestPoint.position;
+        }
+
         yield return new WaitForSeconds(waitStand);
-        
+
         SwitchStates(patrol);
     }
     public void PlayerDetected()
@@ -126,6 +145,12 @@ public class MonsterAi : MonoBehaviour
         StartCoroutine(PlayerDetectedEnum());
     }
 
+    public void currentBuggyPos(Transform buggy)
+    {
+        nextDestination = buggy.position;
+        Debug.Log("buggy");
+        Walk();
+    }
     IEnumerator PlayerDetectedEnum()
     {
         
@@ -162,6 +187,7 @@ public class MonsterPatrol: MonsterStates
     }
     public override void OnUpdate(MonsterAi mAI) 
     {
+        
         if(mAI.navMeshAgent.remainingDistance <= 0.5f)
         {
             mAI.NewPos();
