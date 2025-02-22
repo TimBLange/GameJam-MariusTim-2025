@@ -22,6 +22,7 @@ public class MonsterAi : MonoBehaviour
     [SerializeField] AudioClip[] monsterSounds;
     AudioSource aS;
     public Vector3 currentDestination;
+    [SerializeField] public Animator aM;
     void Start()
     {
         aS = GetComponent<AudioSource>();
@@ -206,7 +207,8 @@ public class MonsterPatrol : MonsterStates
 {
     public override void OnStart(MonsterAi mAI)
     {
-
+        mAI.aM.SetBool("walk", true);
+        mAI.aM.SetBool("run", false);
         Debug.Log("Patrol");
         mAI.navMeshAgent.speed = mAI.normalSpeed;
         mAI.Walk();
@@ -238,6 +240,8 @@ public class MonsterStand : MonsterStates
     public override void OnStart(MonsterAi mAI)
     {
         Debug.Log("Standing");
+        mAI.aM.SetBool("walk", false);
+        mAI.aM.SetBool("run", false);
 
     }
     public override void OnUpdate(MonsterAi mAI)
@@ -256,7 +260,8 @@ public class MonsterHunt : MonsterStates
 {
     public override void OnStart(MonsterAi mAI)
     {
-
+        mAI.aM.SetBool("walk", false);
+        mAI.aM.SetBool("run", true);
         Debug.Log("Hunting");
         mAI.navMeshAgent.speed = mAI.runSpeed;
     }

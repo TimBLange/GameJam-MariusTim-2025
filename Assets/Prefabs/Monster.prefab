@@ -368,6 +368,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   monsterSounds:
   - {fileID: 8300000, guid: e6562d70446e23740992d2471ddbc580, type: 3}
   - {fileID: 8300000, guid: cd3aa296c933ee84d9f14519bfdd21fa, type: 3}
@@ -1200,12 +1201,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c1c6e6bbee0ad0b4598dae9183e3c734, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4568598066127136574}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c1c6e6bbee0ad0b4598dae9183e3c734, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8034851789967377522}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c1c6e6bbee0ad0b4598dae9183e3c734, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3200413007263880665}
     - targetCorrespondingSourceObject: {fileID: -1356944241255443110, guid: c1c6e6bbee0ad0b4598dae9183e3c734, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1430997234529297210}
@@ -1846,44 +1841,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &8034851789967377522
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7066938082211636144}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3200413007263880665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7066938082211636144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fff0960ef4ea6e04eac66b4a7fd2189d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RigLayers:
-  - m_Rig: {fileID: 292597490507593129}
-    m_Active: 1
-  m_Effectors: []
 --- !u!4 &7218295490832716331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8430968375445173046, guid: c1c6e6bbee0ad0b4598dae9183e3c734, type: 3}
