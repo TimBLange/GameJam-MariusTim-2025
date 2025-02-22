@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 689040553936855202}
   - component: {fileID: 6600276246902451980}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 2345848045973153339}
   - component: {fileID: 5274739974202865249}
   - component: {fileID: 2141289492764752129}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: PlayerHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5047552885404840714}
   - component: {fileID: 5614285261107112910}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: CamPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,7 +338,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 619853620587913113}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: HandBob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -372,7 +372,7 @@ GameObject:
   - component: {fileID: 1272505117586697571}
   - component: {fileID: 5814529024723793968}
   - component: {fileID: 677456199146217128}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: PlayerNumber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -508,7 +508,7 @@ GameObject:
   - component: {fileID: 6457113892037506771}
   - component: {fileID: 5024354985706305125}
   - component: {fileID: 9218211529693667211}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -583,7 +583,7 @@ GameObject:
   - component: {fileID: 2875079013501257074}
   - component: {fileID: 3364140924465191439}
   - component: {fileID: 6683360884361857135}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: PercentText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -719,7 +719,7 @@ GameObject:
   - component: {fileID: 8883178515657271398}
   - component: {fileID: 511303126138787495}
   - component: {fileID: 3897278986167485738}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: TMPLookAtHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -855,7 +855,7 @@ GameObject:
   - component: {fileID: 7969205954294117767}
   - component: {fileID: 8699484505971702379}
   - component: {fileID: 6320027352676033752}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -931,7 +931,7 @@ GameObject:
   - component: {fileID: 397899843282493791}
   - component: {fileID: 6635990351171385291}
   - component: {fileID: 1670804912792431636}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1039,7 +1039,7 @@ GameObject:
   - component: {fileID: 4626892078091793849}
   - component: {fileID: 6556330489817387339}
   - component: {fileID: 272593461027293363}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Recticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1112,7 +1112,7 @@ GameObject:
   - component: {fileID: 4996763002161178738}
   - component: {fileID: 5032182305248961798}
   - component: {fileID: 2924225777094064206}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Dead Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1207,7 +1207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7884029723254111506}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1243,7 +1243,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5676141858016209251}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: EquipHand
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -1285,7 +1285,7 @@ GameObject:
   - component: {fileID: 2182833154990448780}
   - component: {fileID: 365616176412504878}
   - component: {fileID: 4716199057460518777}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1624,7 +1624,7 @@ GameObject:
   - component: {fileID: 8743785937319333634}
   - component: {fileID: 660097342961860185}
   - component: {fileID: 350230589310257883}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -1856,7 +1856,7 @@ GameObject:
   - component: {fileID: 3340044099869415189}
   - component: {fileID: 5162357368828928615}
   - component: {fileID: 850571111177127992}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: RawImage (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1928,7 +1928,7 @@ GameObject:
   - component: {fileID: 7209923917250958421}
   - component: {fileID: 6891493752949252959}
   - component: {fileID: 3322932315247616127}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: RawImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}

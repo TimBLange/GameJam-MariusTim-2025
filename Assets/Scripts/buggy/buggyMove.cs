@@ -10,6 +10,7 @@ public class buggyMove : MonoBehaviour
     public BuggyState buggyDrive = new BuggyDriveState();
     public BuggyState buggyStand = new BuggyStandState();
     public AudioSource aS;
+    [SerializeField] public MonsterAi mAI;
     private void Awake()
     {
         
@@ -51,6 +52,10 @@ public class buggyMove : MonoBehaviour
             SwitchState(buggyStand);
         }
     }
+    public void setMonsterBuggy()
+    {
+        mAI.currentBuggyPos(this.gameObject.transform);
+    }
 }
 public abstract class BuggyState
 {
@@ -65,7 +70,7 @@ public class BuggyStandState : BuggyState
     {
         Debug.Log("BuggyStand");
         bM.aS.volume = 0.100f;
-
+        
     }
     public override void OnLateUpdate(buggyMove bM)
     {
@@ -82,7 +87,7 @@ public class BuggyDriveState : BuggyState
     public override void OnStart(buggyMove bM)
     {
         Debug.Log("BuggyDrives");
-
+        bM.setMonsterBuggy();
         bM.aS.volume = 0.225f;
     }
     public override void OnLateUpdate(buggyMove bM)
