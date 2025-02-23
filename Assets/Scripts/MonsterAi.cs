@@ -267,15 +267,16 @@ public class MonsterHunt : MonsterStates
     }
     public override void OnUpdate(MonsterAi mAI)
     {
+        if ( mAI.CheckInDistance())
+        {
+            mAI.nextDestination = mAI.player.transform.position;
+        }
         if (!mAI.CheckIfInSight() || !mAI.inTrigger)
         {
             if (mAI.navMeshAgent.remainingDistance <= 0.5f)
                 mAI.NewPos();
         }
-        if (mAI.CheckIfInSight() && mAI.CheckInDistance())
-        {
-            mAI.nextDestination = mAI.player.transform.position;
-        }
+        
 
         mAI.Walk();
     }

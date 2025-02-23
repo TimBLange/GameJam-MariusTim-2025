@@ -6,6 +6,7 @@ public class fireLogic : MonoBehaviour
     [SerializeField] float lifeInSeconds;
     [SerializeField] trashCountManager tcm;
     float startLifeTime;
+    
 
     public void Extinguish(float damage)
     {

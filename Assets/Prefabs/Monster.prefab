@@ -355,7 +355,7 @@ MonoBehaviour:
   nextDestination: {x: 0, y: 0, z: 0}
   normalSpeed: 5
   runSpeed: 0
-  maxDistance: 20
+  maxDistance: 50
   waitStand: 2
   player: {fileID: 0}
   plMovement: {fileID: 0}

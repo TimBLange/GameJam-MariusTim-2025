@@ -4,6 +4,8 @@ public class endingButtonLogic : MonoBehaviour,IInteractable
 {
     bool canBePressed;
     sceneLoading scM;
+
+    [SerializeField] AudioSource aS;
     void Start()
     {
         scM = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<sceneLoading>();
@@ -12,6 +14,7 @@ public class endingButtonLogic : MonoBehaviour,IInteractable
 
     public void Interact()
     {
+        aS.Play();
         if (canBePressed)
         {
             Debug.Log("YOU HAVE WON THE GAME");
