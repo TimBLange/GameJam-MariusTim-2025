@@ -21,12 +21,17 @@ public class sceneLoading : MonoBehaviour
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
 
-        LoadingScreen.SetActive(true);
-        while (!operation.isDone)
+        if (LoadingScreen != null)
         {
-            float progressValue = Mathf.Clamp01(operation.progress / 0.9f);
-            LoadingBarFill.fillAmount = progressValue;
-            yield return null;
+
+
+            LoadingScreen.SetActive(true);
+            while (!operation.isDone)
+            {
+                float progressValue = Mathf.Clamp01(operation.progress / 0.9f);
+                LoadingBarFill.fillAmount = progressValue;
+                yield return null;
+            }
         }
     }
 }
