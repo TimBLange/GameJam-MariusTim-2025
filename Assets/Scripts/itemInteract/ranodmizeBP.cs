@@ -2,16 +2,12 @@ using UnityEngine;
 
 public class ranodmizeBP : MonoBehaviour
 {
-    [SerializeField] Mesh[] meshes;
-    [SerializeField] MeshFilter mR;
+    [SerializeField] GameObject[] gameObjects;
+    
     void Awake()
     {
-        mR.mesh = meshes[Random.Range(0, 4)];
+        gameObjects[Random.Range(0, 5)].SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

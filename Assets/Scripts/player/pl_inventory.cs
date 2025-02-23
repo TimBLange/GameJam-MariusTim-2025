@@ -148,6 +148,7 @@ public class pl_inventory : MonoBehaviour
                 throwableRb = null;
                 break;
             case "Broom":
+                aS.clip = broomPutDownSound;
                 Destroy(equipmentInHand);
                 
                 break;
