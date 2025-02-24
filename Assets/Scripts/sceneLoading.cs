@@ -12,6 +12,14 @@ public class sceneLoading : MonoBehaviour
         StartCoroutine(LoadSceneAsync(sceneName));
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("ass");
+            QuitGame();
+        }
+    }
     public void QuitGame()
     {
         Application.Quit();

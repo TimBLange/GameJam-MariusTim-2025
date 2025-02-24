@@ -24,13 +24,6 @@ public class pl_dieLogic : MonoBehaviour
         resetPosition();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Die();
-        }
-    }
     public void Die()
     {
         

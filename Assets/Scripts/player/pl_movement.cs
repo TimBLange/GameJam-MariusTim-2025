@@ -107,7 +107,7 @@ public class pl_movement : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.LeftControl))
         {
             Ray r = new Ray(transform.position, transform.up);
-            if (!Physics.Raycast(r, out RaycastHit hitInfo, currentHeight / 2 + 0.5f))
+            if (!Physics.Raycast(r, out RaycastHit hitInfo, 2,7))
             {
                 SwitchState(standingState);
                 transform.position = transform.position + Vector3.up * 0.1f;

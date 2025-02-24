@@ -277,6 +277,7 @@ public class MonsterHunt : MonsterStates
                 mAI.NewPos();
         }
         
+        
 
         mAI.Walk();
     }

@@ -33,6 +33,6 @@ public class fireLogic : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position, 1);
+        Gizmos.DrawSphere(transform.position+Vector3.up, 0.25f);
     }
 }

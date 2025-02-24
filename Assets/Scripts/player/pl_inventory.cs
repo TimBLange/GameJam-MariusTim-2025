@@ -284,7 +284,7 @@ public class BroomState : InventoryState
                 
                 if (pI.broomBloodMeterCurrent < pI.broomBloodMeterMax)
                 {
-                    if (hitInfo.collider.gameObject.TryGetComponent(out fireLogic fL) && pI.broomBloodMeterCurrent < pI.broomBloodMeterMax)
+                    if (hitInfo.collider.gameObject.TryGetComponent(out fireLogic fL) && pI.broomBloodMeterCurrent < pI.broomBloodMeterMax &&hitInfo.transform.CompareTag("Blood"))
                     {
                         pI.aS.clip = pI.bloodSound;
                         pI.aS.Play();
